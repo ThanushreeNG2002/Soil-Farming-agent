@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style.css">  
+  <title>User Dashboard</title>
+</head>
+<body onload="loadData()">
+  <h2>Available Soil Types</h2>
+  <div id="soilData"></div>
+
+  <h2>Distributors</h2>
+  <div id="distributorData"></div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- Firebase Config + Logic -->
+  <script src="js/firebase.js"></script>
+  <script src="js/user.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style.css">  
+  <title>Admin Panel</title>
+</head>
+<body>
+  <h2>Post Soil Details</h2>
+  <input type="text" id="soilType" placeholder="Soil Type" />
+  <input type="text" id="recommendedCrop" placeholder="Recommended Crop" />
+  <button onclick="postSoil()">Submit Soil</button>
+
+  <h2>Post Distributor Details</h2>
+  <input type="text" id="distributorName" placeholder="Distributor Name" />
+  <input type="text" id="location" placeholder="Location" />
+  <button onclick="postDistributor()">Submit Distributor</button>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- Firebase Config and Admin Logic -->
+  <script src="js/firebase.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
