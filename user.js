@@ -1,30 +1,41 @@
-
-// js/user.js
-
 function loadData() {
-  // Load Soil Data
-  db.collection("soils").orderBy("timestamp", "desc").get().then(snapshot => {
-    let soilHTML = "<ul>";
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      soilHTML += `<li><strong>${data.soilType}</strong>: ${data.recommendedCrop}</li>`;
-    });
-    soilHTML += "</ul>";
-    document.getElementById("soilData").innerHTML = soilHTML;
-  }).catch(err => {
-    console.error("Error loading soils:", err);
-  });
+  const soilContainer = document.getElementById("soilData");
+  const distributorContainer = document.getElementById("distributorData");
 
-  // Load Distributor Data
-  db.collection("distributors").orderBy("timestamp", "desc").get().then(snapshot => {
-    let distHTML = "<ul>";
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      distHTML += `<li><strong>${data.name}</strong> - ${data.location}</li>`;
+  soilContainer.innerHTML = "";
+  distributorContainer.innerHTML = "";
+
+  db.collection("soils").orderBy("timestamp", "desc").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <strong>Soil Type:</strong> ${data.soilType}<br>
+          <strong>Recommended Crop:</strong> ${data.recommendedCrop}
+        `;
+        soilContainer.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error("Error loading soils:", err);
     });
-    distHTML += "</ul>";
-    document.getElementById("distributorData").innerHTML = distHTML;
-  }).catch(err => {
-    console.error("Error loading distributors:", err);
-  });
+
+  db.collection("distributors").orderBy("timestamp", "desc").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <strong>Distributor Name:</strong> ${data.name}<br>
+          <strong>Location:</strong> ${data.location}
+        `;
+        distributorContainer.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error("Error loading distributors:", err);
+    });
 }
